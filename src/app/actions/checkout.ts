@@ -2,7 +2,7 @@
 
 import { wixClient } from '@/lib/wixClient';
 
-const RESTAURANTS_APP_ID = '1380b703-9e81-ff05-f970-24eb30944337';
+const RESTAURANTS_APP_ID = '21118222-96ee-a059-923b-01057cf53f7a'; // Correct Wix Restaurants App ID
 
 export async function createCheckout(items: any[]) {
     try {
@@ -13,9 +13,11 @@ export async function createCheckout(items: any[]) {
             quantity: item.quantity,
             catalogReference: {
                 appId: RESTAURANTS_APP_ID,
-                catalogItemId: item.variantId || item.itemId, // Use variant if exists, else base item
+                catalogItemId: item.itemId, // Use the base item ID
             }
         }));
+
+        console.log("Line Items for Wix:", JSON.stringify(lineItems));
 
         // 2. Create the checkout
         const checkoutRes = await wixClient.checkout.createCheckout({
