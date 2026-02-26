@@ -1,6 +1,6 @@
 import { createClient, OAuthStrategy } from '@wix/sdk';
 import { items, menus, sections, itemVariants } from '@wix/restaurants';
-import { checkout } from '@wix/ecom';
+import { checkout, currentCart, cart } from '@wix/ecom';
 import { redirects } from '@wix/redirects';
 import { reservations, timeSlots, reservationLocations } from '@wix/table-reservations';
 
@@ -11,6 +11,8 @@ export const wixClient = createClient({
         sections,
         itemVariants,
         checkout,
+        currentCart,
+        cart,
         redirects,
         reservations,
         timeSlots,

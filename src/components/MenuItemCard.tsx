@@ -7,9 +7,11 @@ import { useCartStore } from '@/store/useCartStore';
 interface MenuItemCardProps {
     item: any;
     globalVariants?: any[];
+    menuId?: string;
+    sectionId?: string;
 }
 
-export default function MenuItemCard({ item, globalVariants = [] }: MenuItemCardProps) {
+export default function MenuItemCard({ item, globalVariants = [], menuId, sectionId }: MenuItemCardProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const addItemIdToCart = useCartStore((state) => state.addItem);
 
@@ -87,7 +89,9 @@ export default function MenuItemCard({ item, globalVariants = [] }: MenuItemCard
             quantity: quantity,
             variantId: selectedVariantId || undefined,
             variantName: selectedVariantName || undefined,
-            imageUrl: displayUrl || undefined
+            imageUrl: displayUrl || undefined,
+            menuId,
+            sectionId
         });
 
         // Close modal after adding

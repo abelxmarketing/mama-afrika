@@ -10,6 +10,8 @@ export interface CartItem {
     variantId?: string;  // The ID of the selected variant (if any)
     variantName?: string;// Display name of the selected variant (e.g. "Huhn")
     imageUrl?: string;   // Image URL for the cart display
+    menuId?: string;     // Required for Wix Restaurants checkout
+    sectionId?: string;  // Required for Wix Restaurants checkout
 }
 
 interface CartStore {

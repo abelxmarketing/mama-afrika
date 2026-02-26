@@ -2,7 +2,7 @@
 
 import { wixClient } from '@/lib/wixClient';
 
-const RESTAURANTS_APP_ID = '21118222-96ee-a059-923b-01057cf53f7a'; // Correct Wix Restaurants App ID
+const RESTAURANTS_APP_ID = '9a5d83fd-8570-482e-81ab-cfa88942ee60'; // Correct Wix Restaurants (New) App ID
 
 export async function createCheckout(items: any[]) {
     try {
@@ -13,7 +13,11 @@ export async function createCheckout(items: any[]) {
             quantity: item.quantity,
             catalogReference: {
                 appId: RESTAURANTS_APP_ID,
-                catalogItemId: item.itemId, // Use the base item ID
+                catalogItemId: item.itemId,
+                options: {
+                    menuId: item.menuId,
+                    sectionId: item.sectionId
+                }
             }
         }));
 
